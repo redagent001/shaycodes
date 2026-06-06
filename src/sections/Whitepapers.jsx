@@ -26,7 +26,7 @@ const papers = [
     slug: '/resources/solo-dev-stack',
     icon: '🚀',
     gradient: 'linear-gradient(135deg,#0d1a2e 0%,#0d3d6e 100%)',
-    badge: 'Coming Soon', badgeStyle: 'gated',
+    badge: '⚿ Free — Email Required', badgeStyle: 'gated',
     cat: 'Developer Guide · ~20 min',
     title: 'The Solo Dev Stack',
     desc: 'A complete guide to building, deploying, and maintaining client apps with Vite, Firebase, and Netlify — from zero to production.',
