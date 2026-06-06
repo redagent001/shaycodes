@@ -12,7 +12,7 @@ const links = [
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
-  const { pathname } = useLocation()
+  const { pathname, hash } = useLocation()
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -21,17 +21,21 @@ export default function Nav() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  useEffect(() => {
+    if (pathname === '/' && hash) {
+      const id = hash.replace('#', '')
+      setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+      }, 300)
+    }
+  }, [pathname, hash])
+
   const handleNavClick = (e, id) => {
     e.preventDefault()
     if (pathname === '/') {
-      // Already on home — just scroll
       document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
     } else {
-      // On a sub-page — navigate home then scroll
-      navigate('/')
-      setTimeout(() => {
-        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
-      }, 100)
+      navigate(`/#${id}`)
     }
   }
 
@@ -57,7 +61,13 @@ export default function Nav() {
       </ul>
 
       <div className={styles.cta}>
-        <a href="/#contact" onClick={(e) => handleNavClick(e, 'contact')} className="btn btn-ghost btn-sm">Let's talk →</a>
+        
+          href="/#contact"
+          onClick={(e) => handleNavClick(e, 'contact')}
+          className="btn btn-ghost btn-sm"
+        >
+          Let's talk →
+        </a>
         
           href="https://redagentsol.com/intake"
           target="_blank"
