@@ -1,0 +1,36 @@
+/* src/styles/tokens.css */
+:root {
+  --bg-0:      #111111;
+  --bg-1:      #181818;
+  --bg-2:      #202020;
+  --bg-3:      #2a2a2a;
+  --bg-4:      #333333;
+
+  --border:     rgba(255,255,255,0.07);
+  --border-md:  rgba(255,255,255,0.12);
+  --border-hi:  rgba(255,255,255,0.18);
+
+  --text-1: #f2f2f2;
+  --text-2: #9a9a9a;
+  --text-3: #606060;
+
+  --teal:       #0d9e87;
+  --teal-dim:   rgba(13,158,135,0.12);
+  --teal-glow:  rgba(13,158,135,0.25);
+  --teal-hi:    #11b89e;
+
+  --orange:     #e8622a;
+  --orange-dim: rgba(232,98,42,0.12);
+
+  --green:  #2dd87a;
+  --blue:   #4b9ef7;
+
+  --sans:    'DM Sans', sans-serif;
+  --display: 'Outfit', sans-serif;
+  --mono:    'DM Mono', monospace;
+
+  --r-sm: 6px;
+  --r-md: 12px;
+  --r-lg: 18px;
+  --r-xl: 24px;
+}

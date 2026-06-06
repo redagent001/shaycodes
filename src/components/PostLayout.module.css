@@ -1,0 +1,92 @@
+.wrap { padding-top: 64px; }
+.inner { max-width: 780px; margin: 0 auto; padding: 0 48px 80px; }
+
+.cover {
+  width: 100%; height: 320px;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+
+.cover::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, transparent 40%, var(--bg-0) 100%);
+}
+
+.coverIcon { font-size: 80px; position: relative; z-index: 1; }
+
+.hero { padding: 60px 0 40px; border-bottom: 1px solid var(--border); margin-bottom: 48px; }
+
+.category {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 20px;
+}
+
+.category::before { content: ''; display: block; width: 16px; height: 1px; background: var(--teal); }
+
+.title {
+  font-family: var(--display);
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 800; letter-spacing: -1.5px; line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.meta {
+  display: flex; align-items: center; gap: 16px;
+  font-family: var(--mono); font-size: 12px; color: var(--text-3);
+  margin-bottom: 24px; flex-wrap: wrap;
+}
+
+.metaDot { width: 3px; height: 3px; background: var(--text-3); border-radius: 50%; display: inline-block; }
+
+.desc { font-size: 18px; color: var(--text-2); line-height: 1.7; }
+
+.tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 24px; }
+
+.tag {
+  padding: 4px 10px;
+  background: var(--bg-2); border: 1px solid var(--border-md);
+  border-radius: var(--r-sm);
+  font-family: var(--mono); font-size: 11px; color: var(--text-3);
+}
+
+/* Post body prose */
+.body p { font-size: 16px; line-height: 1.85; color: var(--text-2); margin-bottom: 24px; }
+.body p strong { color: var(--text-1); font-weight: 600; }
+.body h2 { font-family: var(--display); font-size: 26px; font-weight: 700; letter-spacing: -0.5px; color: var(--text-1); margin: 48px 0 16px; }
+.body h3 { font-family: var(--display); font-size: 20px; font-weight: 700; color: var(--text-1); margin: 32px 0 12px; }
+.body ul { padding-left: 0; margin-bottom: 24px; list-style: none; }
+.body ul li { font-size: 15px; color: var(--text-2); line-height: 1.75; padding: 8px 0 8px 24px; border-bottom: 1px solid var(--border); position: relative; }
+.body ul li::before { content: '→'; position: absolute; left: 0; color: var(--teal); font-size: 13px; }
+.body ul li:last-child { border-bottom: none; }
+.body ol { padding-left: 0; margin-bottom: 24px; list-style: none; counter-reset: list; }
+.body ol li { font-size: 15px; color: var(--text-2); line-height: 1.75; padding: 8px 0 8px 28px; border-bottom: 1px solid var(--border); position: relative; counter-increment: list; }
+.body ol li::before { content: counter(list) '.'; position: absolute; left: 0; color: var(--orange); font-family: var(--mono); font-size: 12px; font-weight: 700; top: 10px; }
+.body ol li:last-child { border-bottom: none; }
+.body hr { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+
+/* Callouts */
+.callout { border-radius: var(--r-md); padding: 20px 24px; margin: 28px 0; border: 1px solid; border-left-width: 3px; }
+.callout p { margin: 0 !important; color: var(--text-1) !important; font-size: 15px !important; }
+.teal   { background: var(--teal-dim);   border-color: rgba(13,158,135,0.25); border-left-color: var(--teal); }
+.orange { background: var(--orange-dim); border-color: rgba(232,98,42,0.25);  border-left-color: var(--orange); }
+
+/* FAQ */
+.faq h2 { font-family: var(--display); font-size: 24px; font-weight: 700; margin-bottom: 24px; }
+.faqItem { background: var(--bg-1); border: 1px solid var(--border); border-radius: var(--r-md); padding: 20px 24px; margin-bottom: 12px; }
+.faqQ { font-size: 15px; font-weight: 600; color: var(--text-1); margin-bottom: 10px; }
+.faqA { font-size: 14px; color: var(--text-2); line-height: 1.7; margin: 0; }
+
+/* CTA */
+.cta {
+  background: linear-gradient(135deg, var(--bg-2) 0%, rgba(13,158,135,0.08) 100%);
+  border: 1px solid var(--border-md);
+  border-radius: var(--r-xl);
+  padding: 48px; margin-top: 64px; text-align: center;
+}
+
+.cta h3 { font-family: var(--display); font-size: 28px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 12px; }
+.cta p { font-size: 15px; color: var(--text-2); margin-bottom: 28px; }
+.ctaActions { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
