@@ -34,12 +34,12 @@ exports.handler = async function (event) {
 
   const payload = {
     email: email.toLowerCase().trim(),
-    fields: { name: name || '', last_name: '' },
+    fields: { name: name || '' },
     ...(groupId ? { groups: [groupId] } : {}),
   }
 
   try {
-    const response = await fetch('https://api.mailerlite.com/api/subscribers', {
+    const response = await fetch('https://connect.mailerlite.com/api/subscribers', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -52,7 +52,8 @@ exports.handler = async function (event) {
     const data = await response.json()
 
     if (!response.ok) {
-      console.error('MailerLite error:', data)
+      console.error('MailerLite error status:', response.status)
+      console.error('MailerLite error body:', JSON.stringify(data))
       return { statusCode: response.status, headers, body: JSON.stringify({ error: data?.message || 'MailerLite error' }) }
     }
 
