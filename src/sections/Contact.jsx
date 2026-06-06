@@ -7,11 +7,35 @@ export default function Contact() {
 
   const onChange = e => setForm(f => ({ ...f, [e.target.name]: e.target.value }))
 
+  const encode = (data) => {
+    return Object.keys(data)
+      .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+      .join('&')
+  }
+
   const onSubmit = async e => {
     e.preventDefault()
     setStatus('sending')
-    // Wire to Netlify Forms or Firebase in production
-    setTimeout(() => setStatus('sent'), 1200)
+
+    try {
+      const res = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encode({
+          'form-name': 'contact',
+          ...form
+        }),
+      })
+
+      if (res.ok) {
+        setStatus('sent')
+        setForm({ name:'', email:'', service:'', message:'' })
+      } else {
+        setStatus('error')
+      }
+    } catch {
+      setStatus('error')
+    }
   }
 
   return (
@@ -58,7 +82,19 @@ export default function Contact() {
                 </div>
               </div>
             ) : (
-              <form onSubmit={onSubmit} className={styles.form}>
+              <form
+                onSubmit={onSubmit}
+                className={styles.form}
+                name="contact"
+                method="POST"
+                data-netlify="true"
+                data-netlify-honeypot="bot-field"
+              >
+                <input type="hidden" name="form-name" value="contact" />
+                <div style={{display:'none'}}>
+                  <input name="bot-field" onChange={onChange} />
+                </div>
+
                 <div className={styles.row}>
                   <div className={styles.group}>
                     <label>Your name</label>
@@ -82,6 +118,11 @@ export default function Contact() {
                   <label>Tell me about your project</label>
                   <textarea name="message" rows={4} placeholder="Give me the overview — what you're building, timeline, and budget range..." value={form.message} onChange={onChange} />
                 </div>
+                {status === 'error' && (
+                  <p style={{ color: '#ff6b6b', fontSize: '13px', fontFamily: 'var(--mono)' }}>
+                    Something went wrong. Try emailing shay.codes.dev@gmail.com directly.
+                  </p>
+                )}
                 <button type="submit" className={styles.submit} disabled={status === 'sending'}>
                   {status === 'sending' ? 'Sending...' : 'Send message →'}
                 </button>
