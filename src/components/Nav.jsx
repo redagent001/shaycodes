@@ -49,7 +49,7 @@ export default function Nav() {
       <ul className={styles.links}>
         {links.map(({ label, id }) => (
           <li key={label}>
-            
+            <a
               href={`/#${id}`}
               className={styles.link}
               onClick={(e) => handleNavClick(e, id)}
@@ -61,14 +61,14 @@ export default function Nav() {
       </ul>
 
       <div className={styles.cta}>
-        
+        <a
           href="/#contact"
           onClick={(e) => handleNavClick(e, 'contact')}
           className="btn btn-ghost btn-sm"
         >
           Let's talk →
         </a>
-        
+        <a
           href="https://redagentsol.com/intake"
           target="_blank"
           rel="noreferrer"
