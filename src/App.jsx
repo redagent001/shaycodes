@@ -4,6 +4,7 @@ import Nav from './components/Nav.jsx'
 import Footer from './components/Footer.jsx'
 import Cursor from './components/Cursor.jsx'
 import ScrollReveal from './components/ScrollReveal.jsx'
+import WhitepaperSoloDevStack from './pages/WhitepaperSoloDevStack.jsx'
 
 // Home sections
 import Hero from './sections/Hero.jsx'
@@ -56,6 +57,7 @@ export default function App() {
         <Route path="/blog/firestore-data-modeling" element={<BlogFirestore />} />
         <Route path="/resources/build-buy-hire" element={<WhitepaperBuildBuyHire />} />
         <Route path="/resources/app-audit" element={<WhitepaperAppAudit />} />
+        <Route path="/resources/solo-dev-stack" element={<WhitepaperSoloDevStack />} />
       </Routes>
       <Footer />
       <ScrollReveal />
